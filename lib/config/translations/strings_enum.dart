@@ -14,10 +14,11 @@ class Strings {
   static const String serverError = 'Server error';
   static const String urlNotFound = 'Url not found';
 
-  static const String appName = 'Sezon App';
+  static const String appName = 'e_tourism';
   static const String login = 'Login';
   static const String register = 'Register';
   static const String username = 'Username';
+  static const String email = 'Email';
   static const String mobilePhone = 'Mobile Phone';
   static const String password = 'Password';
   static const String confirmPassword = 'Confirm Password';

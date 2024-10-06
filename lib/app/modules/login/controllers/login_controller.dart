@@ -6,6 +6,7 @@ import 'package:e_tourism/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
   final nameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
   late TapGestureRecognizer tapGestureRecognizer = TapGestureRecognizer()
     ..onTap = navigateToRegisterScreen;

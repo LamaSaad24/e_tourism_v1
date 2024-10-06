@@ -1,10 +1,10 @@
+import 'package:e_tourism/app/data/repositories/admin/programmes/controllers/programmes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:get/get.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/controllers/guides.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/views/widgets/common_card.dart';
+import 'package:e_tourism/app/data/repositories/admin/programmes/views/widgets/common_card.dart';
 
-class ProgrammesView extends GetView<GuidesController> {
+class ProgrammesView extends GetView<ProgrammesController> {
   @override
   Widget build(BuildContext context) {
     return AdminScaffold(
@@ -44,6 +44,11 @@ class ProgrammesView extends GetView<GuidesController> {
             title: 'السياح ',
             icon: Icons.accessibility,
             route: '/tourists',
+          ),
+          AdminMenuItem(
+            title: 'تسجيل دخول  ',
+            icon: Icons.accessibility,
+            route: '/login',
           )
         ],
         selectedRoute: '/',
@@ -61,9 +66,9 @@ class ProgrammesView extends GetView<GuidesController> {
             mainAxisSpacing: 10,
             childAspectRatio: 0.75,
           ),
-          itemCount: controller.guides.length,
+          itemCount: controller.programmes.length,
           itemBuilder: (context, index) {
-            final guide = controller.guides[index];
+            final programme = controller.programmes[index];
             return CommonCard(
               // height: 166,
               child: Padding(
@@ -86,23 +91,19 @@ class ProgrammesView extends GetView<GuidesController> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      '${guide['fName']} ${guide['lName']}',
+                      '${programme['Name']} ${programme['Name']}',
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'رقم الهاتف: ${guide['mobile']}',
+                      ' النوع: ${programme['Type']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
+
                     const SizedBox(height: 6),
                     Text(
-                      'العنوان: ${guide['Address']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'وصف: ${guide['description']}',
+                      'وصف: ${programme['description']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                     const Spacer(),
@@ -112,13 +113,13 @@ class ProgrammesView extends GetView<GuidesController> {
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.blue),
                           onPressed: () {
-                            Get.toNamed('/editGuide', arguments: guide);
+                            Get.toNamed('/editProgrammes', arguments: programme);
                           },
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
-                            controller.deleteGuide(guide['id']);
+                            controller.deleteProgrammes(programme['id']);
                           },
                         ),
                       ],

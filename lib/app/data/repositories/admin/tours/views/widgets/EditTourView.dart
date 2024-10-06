@@ -1,17 +1,18 @@
+import 'package:e_tourism/app/data/repositories/admin/tours/controllers/tours.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/controllers/guides.dart';
 
-class EditTourView extends GetView<GuidesController> {
+class EditTourView extends GetView<ToursController> {
   @override
   Widget build(BuildContext context) {
-    final guide = Get.arguments;
-    final fNameController = TextEditingController(text: guide['fName']);
-    final lNameController = TextEditingController(text: guide['lName']);
-    final mobileController = TextEditingController(text: guide['mobile']);
-    final addressController = TextEditingController(text: guide['Address']);
-    final descriptionController =
-        TextEditingController(text: guide['description']);
+    final tour = Get.arguments;
+    final guiedController = TextEditingController(text: tour['guied_id']);
+    final driverController = TextEditingController(text: tour['driver_id']);
+    final programmeController =
+        TextEditingController(text: tour['programme_id']);
+    final priceController = TextEditingController(text: tour['price']);
+    final numberController = TextEditingController(text: tour['number']);
 
     return Scaffold(
       appBar: AppBar(
@@ -22,58 +23,83 @@ class EditTourView extends GetView<GuidesController> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            SizedBox(height: 10.h),
             TextField(
-                controller: fNameController,
+                controller: guiedController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(color: Colors.grey, width: 2.0),
                     ),
-                    labelText: 'الاسم الأول')),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    labelText: ' رقم الدليل')),
+            SizedBox(height: 10.h),
             TextField(
-                controller: lNameController,
+                controller: driverController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(color: Colors.grey, width: 2.0),
                     ),
-                    labelText: 'اسم العائلة')),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    labelText: 'رقم السائق')),
+            SizedBox(height: 10.h),
             TextField(
-                controller: mobileController,
+                controller: programmeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(color: Colors.grey, width: 2.0),
                     ),
-                    labelText: 'رقم الهاتف')),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    labelText: 'رقم البرنامج')),
+            SizedBox(height: 10.h),
             TextField(
-                controller: addressController,
+                controller: priceController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(color: Colors.grey, width: 2.0),
                     ),
-                    labelText: 'العنوان')),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    labelText: 'السعر')),
+            SizedBox(height: 10.h),
             TextField(
-                controller: descriptionController,
+                controller: numberController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
                       borderSide: BorderSide(color: Colors.grey, width: 2.0),
                     ),
-                    labelText: 'الوصف')),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                    ),
+                    labelText: 'الرقم')),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Map<String, dynamic> updatedGuide = {
-                  'id': guide['id'],
-                  'fName': fNameController.text,
-                  'lName': lNameController.text,
-                  'mobile': mobileController.text,
-                  'Address': addressController.text,
-                  'description': descriptionController.text,
+                Map<String, dynamic> updatedTour = {
+                  'id': tour['id'],
+                  'guied_id': guiedController.text,
+                  'driver_id': driverController.text,
+                  'programme_id': programmeController.text,
+                  'price_id': priceController.text,
+                  'number_id': numberController.text,
                 };
-                controller.updateGuide(updatedGuide);
+                controller.updateTour(updatedTour);
                 Get.back(); // العودة إلى صفحة المرشدين
               },
               style:

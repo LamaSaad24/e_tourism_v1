@@ -28,7 +28,7 @@ class AuthBackground extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 26.sp,
+                fontSize: 24.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),

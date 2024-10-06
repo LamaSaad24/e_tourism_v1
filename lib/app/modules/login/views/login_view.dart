@@ -16,12 +16,14 @@ class LoginView extends GetView<LoginController> {
         child: Column(
           children: [
             AuthBackground(title: Strings.login.tr),
+            SizedBox(height: 30.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.h),
               child: AppTextField(
-                controller: controller.nameController,
-                labelText: Strings.username.tr,
+                controller: controller.emailController,
+                labelText: Strings.email.tr,
                 keyboardType: TextInputType.text,
+                hint: "example@gmail.com",
               ),
             ),
             SizedBox(height: 30.h),
@@ -33,20 +35,6 @@ class LoginView extends GetView<LoginController> {
                 labelText: Strings.password.tr,
                 keyboardType: TextInputType.text,
                 hint: '12345',
-              ),
-            ),
-            SizedBox(height: 5.h),
-            Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.h),
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    Strings.forgetPassword.tr,
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                ),
               ),
             ),
             SizedBox(height: 20.h),
@@ -68,7 +56,7 @@ class LoginView extends GetView<LoginController> {
                 text: Strings.notHaveAccount.tr,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 17,
+                  fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
                 children: [

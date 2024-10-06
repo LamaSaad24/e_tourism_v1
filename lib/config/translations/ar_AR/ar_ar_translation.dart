@@ -19,6 +19,7 @@ final Map<String, String> arAR =
   Strings.login : 'تسجيل الدخول',
   Strings.register : 'انشاء حساب جديد',
   Strings.username : 'اسم المستخدم',
+  Strings.email : "البريد الإلكتروني",
   Strings.mobilePhone : 'رقم الهاتف',
   Strings.password : 'كلمة المرور',
   Strings.confirmPassword : 'تأكيد كلمة المرور',

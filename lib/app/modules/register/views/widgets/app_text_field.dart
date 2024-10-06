@@ -38,11 +38,17 @@ class AppTextField extends StatelessWidget {
           fontSize: 20.sp,
         ),
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: TextStyle(color: Colors.black26),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.r),
         ),
-        focusedBorder: OutlineInputBorder(
+          enabledBorder:UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.black26,
+              width: 0.5,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.r),
           borderSide: BorderSide(
             color: Colors.deepPurple,

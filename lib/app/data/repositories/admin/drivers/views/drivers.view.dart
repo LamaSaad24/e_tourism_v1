@@ -1,10 +1,10 @@
+import 'package:e_tourism/app/data/repositories/admin/drivers/controllers/drivers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:get/get.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/controllers/guides.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/views/widgets/common_card.dart';
+import 'package:e_tourism/app/data/repositories/admin/drivers/views/widgets/common_card.dart';
 
-class DriversView extends GetView<GuidesController> {
+class DriversView extends GetView<DriversController> {
   @override
   Widget build(BuildContext context) {
     return AdminScaffold(
@@ -45,10 +45,9 @@ class DriversView extends GetView<GuidesController> {
             icon: Icons.accessibility,
             route: '/tourists',
           ),
-          
           AdminMenuItem(
             title: 'تسجيل الدخول ',
-            icon: Icons.accessibility,
+            icon: Icons.login,
             route: '/login',
           ),
         ],
@@ -67,9 +66,9 @@ class DriversView extends GetView<GuidesController> {
             mainAxisSpacing: 10,
             childAspectRatio: 0.75,
           ),
-          itemCount: controller.guides.length,
+          itemCount: controller.drivers.length,
           itemBuilder: (context, index) {
-            final guide = controller.guides[index];
+            final driver = controller.drivers[index];
             return CommonCard(
               // height: 166,
               child: Padding(
@@ -92,23 +91,19 @@ class DriversView extends GetView<GuidesController> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      '${guide['fName']} ${guide['lName']}',
+                      '${driver['fName']} ${driver['lName']}',
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'رقم الهاتف: ${guide['mobile']}',
+                      'رقم اللوحة: ${driver['plateNum']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
+
                     const SizedBox(height: 6),
                     Text(
-                      'العنوان: ${guide['Address']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'وصف: ${guide['description']}',
+                      'وصف: ${driver['description']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                     const Spacer(),
@@ -118,13 +113,13 @@ class DriversView extends GetView<GuidesController> {
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.blue),
                           onPressed: () {
-                            Get.toNamed('/editGuide', arguments: guide);
+                            Get.toNamed('/editDrivers', arguments: driver);
                           },
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
-                            controller.deleteGuide(guide['id']);
+                            controller.deleteDriver(driver['id']);
                           },
                         ),
                       ],

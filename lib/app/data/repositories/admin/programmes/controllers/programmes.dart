@@ -2,35 +2,32 @@ import 'package:get/get.dart';
 
 class ProgrammesController extends GetxController {
   // البيانات الوهمية للمرشدين
-  var guides = <Map<String, dynamic>>[
+  var programmes = <Map<String, dynamic>>[
     {
       'id': 1,
-      'fName': 'أحمد',
-      'lName': 'محمد',
-      'Address': 'عمان',
-      'mobile': '123456789',
+      'Type': 'ترفيهي',
+      'Name': 'محمد',
       'description': 'مرشد سياحي ذو خبرة عالية'
     },
     {
       'id': 2,
-      'fName': 'سارة',
-      'lName': 'أحمد',
-      'Address': 'القدس',
-      'mobile': '987654321',
-      'description': 'متخصصة في الجولات الثقافية'
+      'Type': 'ترفيهي',
+      'Name': 'محمد',
+      'description': 'مرشد سياحي ذو خبرة عالية'
     },
   ].obs;
 
   // دالة حذف المرشد
-  void deleteGuide(int id) {
-    guides.removeWhere((guide) => guide['id'] == id);
+  void deleteProgrammes(int id) {
+    programmes.removeWhere((prog) => prog['id'] == id);
   }
 
   // دالة تحديث المرشد
-  void updateGuide(Map<String, dynamic> updatedGuide) {
-    int index = guides.indexWhere((guide) => guide['id'] == updatedGuide['id']);
+  void updateProgrammes(Map<String, dynamic> updatedProgrammes) {
+    int index =
+        programmes.indexWhere((prog) => prog['id'] == updatedProgrammes['id']);
     if (index != -1) {
-      guides[index] = updatedGuide;
+      programmes[index] = updatedProgrammes;
     }
   }
 }

@@ -22,6 +22,17 @@ class RegisterView extends GetView<RegisterController> {
                 controller: controller.nameController,
                 labelText: Strings.username.tr,
                 keyboardType: TextInputType.text,
+                hint:'test'
+              ),
+            ),
+            SizedBox(height: 30.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.h),
+              child: AppTextField(
+                  controller: controller.emailController,
+                  labelText: Strings.email.tr,
+                  keyboardType: TextInputType.text,
+                  hint:'example@gmail.com'
               ),
             ),
             SizedBox(height: 30.h),
@@ -79,7 +90,7 @@ class RegisterView extends GetView<RegisterController> {
                 text: Strings.haveAccount.tr,
                 style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 17,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
                 children: [

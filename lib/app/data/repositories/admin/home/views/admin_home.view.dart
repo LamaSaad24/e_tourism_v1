@@ -48,7 +48,7 @@ class AdminHomeView extends GetView<AdminHomeController> {
           ),
           AdminMenuItem(
             title: 'تسجيل الدخول ',
-            icon: Icons.accessibility,
+            icon: Icons.login,
             route: '/login',
           ),
         ],

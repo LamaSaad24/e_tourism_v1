@@ -1,10 +1,10 @@
+import 'package:e_tourism/app/data/repositories/admin/tourists/controllers/tourists.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:get/get.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/controllers/guides.dart';
-import 'package:e_tourism/app/data/repositories/admin/guides/views/widgets/common_card.dart';
+import 'package:e_tourism/app/data/repositories/admin/tourists/views/widgets/common_card.dart';
 
-class TouristsView extends GetView<GuidesController> {
+class TouristsView extends GetView<TouristsController> {
   @override
   Widget build(BuildContext context) {
     return AdminScaffold(
@@ -47,7 +47,7 @@ class TouristsView extends GetView<GuidesController> {
           ),
           AdminMenuItem(
             title: 'تسجيل الدخول ',
-            icon: Icons.accessibility,
+            icon: Icons.login,
             route: '/login',
           ),
         ],
@@ -66,9 +66,9 @@ class TouristsView extends GetView<GuidesController> {
             mainAxisSpacing: 10,
             childAspectRatio: 0.75,
           ),
-          itemCount: controller.guides.length,
+          itemCount: controller.tourists.length,
           itemBuilder: (context, index) {
-            final guide = controller.guides[index];
+            final tourist = controller.tourists[index];
             return CommonCard(
               // height: 166,
               child: Padding(
@@ -91,23 +91,18 @@ class TouristsView extends GetView<GuidesController> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      '${guide['fName']} ${guide['lName']}',
+                      '${tourist['fName']} ${tourist['lName']}',
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'رقم الهاتف: ${guide['mobile']}',
+                      'رقم الرحلة: ${tourist['tour_id']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'العنوان: ${guide['Address']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'وصف: ${guide['description']}',
+                      'وصف: ${tourist['description']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
                     const Spacer(),
@@ -117,13 +112,13 @@ class TouristsView extends GetView<GuidesController> {
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.blue),
                           onPressed: () {
-                            Get.toNamed('/editGuide', arguments: guide);
+                            Get.toNamed('/editTourists', arguments: tourist);
                           },
                         ),
                         IconButton(
                           icon: Icon(Icons.delete, color: Colors.red),
                           onPressed: () {
-                            controller.deleteGuide(guide['id']);
+                            controller.deleteTourist(tourist['id']);
                           },
                         ),
                       ],

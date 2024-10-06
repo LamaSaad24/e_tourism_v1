@@ -38,10 +38,19 @@ class AppTextField extends StatelessWidget {
           fontSize: 20.sp,
         ),
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5.r),
+        hintStyle: TextStyle(color: Colors.black26),
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.grey,
+            width: 1.5,
+          ),
         ),
+        enabledBorder:UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black26,
+            width: 0.5,
+          ),
+        ) ,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5.r),
           borderSide: BorderSide(
@@ -52,5 +61,4 @@ class AppTextField extends StatelessWidget {
       ),
     );
   }
-
 }

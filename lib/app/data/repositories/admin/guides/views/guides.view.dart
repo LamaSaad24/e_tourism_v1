@@ -47,7 +47,7 @@ class GuidesView extends GetView<GuidesController> {
           ),
           AdminMenuItem(
             title: 'تسجيل الدخول ',
-            icon: Icons.accessibility,
+            icon: Icons.login,
             route: '/login',
           ),
         ],

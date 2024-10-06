@@ -5,6 +5,7 @@ import 'package:e_tourism/app/data/repositories/user/auth/auth_repository.dart';
 
 class RegisterController extends GetxController {
   final nameController = TextEditingController();
+  final emailController = TextEditingController();
   final mobileController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
