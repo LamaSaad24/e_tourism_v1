@@ -23,12 +23,12 @@ class AdminHomeView extends GetView<AdminHomeController> {
           ),
           AdminMenuItem(
             title: 'الدليل السياحيين',
-            icon: Icons.accessibility,
+            icon: Icons.drive_eta,
             route: '/guides',
           ),
           AdminMenuItem(
             title: 'السائقين ',
-            icon: Icons.car_rental_sharp,
+            icon: Icons.drive_eta,
             route: '/drivers',
           ),
           AdminMenuItem(
@@ -38,12 +38,12 @@ class AdminHomeView extends GetView<AdminHomeController> {
           ),
           AdminMenuItem(
             title: 'الرحلات ',
-            icon: Icons.account_tree_outlined,
+            icon: Icons.tour,
             route: '/tours',
           ),
           AdminMenuItem(
             title: 'السياح ',
-            icon: Icons.accessibility,
+            icon: Icons.drive_eta,
             route: '/tourists',
           ),
           AdminMenuItem(
@@ -73,93 +73,94 @@ class AdminHomeView extends GetView<AdminHomeController> {
                 ),
               ),
               SizedBox(height: 20),
-                  GridView.count(
-                    crossAxisCount: 2, // عدد الأعمدة
-                    crossAxisSpacing: 10, // المسافة بين الأعمدة
-                    mainAxisSpacing: 10, // المسافة بين الصفوف
-                    shrinkWrap: true, // يتناسب مع محتوى الشاشة ولا يحتاج إلى التمرير
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, '/guides'); // تأكد من تعريف المسار '/guides'
-                      },
-                      child: DashboardCard(
-                        icon: Icons.people,
-                        color: Colors.amber,
-                        label: "الدليل السياحي",
-                        value: 30,
-                        route: '/guides',
-                      ),
+              GridView.count(
+                crossAxisCount: 2, // عدد الأعمدة
+                crossAxisSpacing: 10, // المسافة بين الأعمدة
+                mainAxisSpacing: 10, // المسافة بين الصفوف
+                shrinkWrap:
+                    true, // يتناسب مع محتوى الشاشة ولا يحتاج إلى التمرير
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, '/guides'); // تأكد من تعريف المسار '/guides'
+                    },
+                    child: DashboardCard(
+                      icon: Icons.people,
+                      color: Colors.amber,
+                      label: "الدليل السياحي",
+                      value: 30,
+                      route: '/guides',
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context,
-                            '/drivers'); // تأكد من تعريف المسار '/guides'
-                      },
-                      child: DashboardCard(
-                        icon: Icons.car_rental_sharp,
-                        color: Colors.deepOrangeAccent,
-                        label: "السائقيين",
-                        value: 30,
-                        route: '/drivers',
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context,
+                          '/drivers'); // تأكد من تعريف المسار '/guides'
+                    },
+                    child: DashboardCard(
+                      icon: Icons.drive_eta,
+                      color: Colors.deepOrangeAccent,
+                      label: "السائقيين",
+                      value: 30,
+                      route: '/drivers',
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context,
-                            '/programmes'); // تأكد من تعريف المسار '/guides'
-                      },
-                      child: DashboardCard(
-                        icon: Icons.add_chart,
-                        color: Colors.lightBlueAccent,
-                        label: "البرامج السياحية",
-                        value: 30,
-                        route: '/programmes',
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context,
+                          '/programmes'); // تأكد من تعريف المسار '/guides'
+                    },
+                    child: DashboardCard(
+                      icon: Icons.add_chart,
+                      color: Colors.lightBlueAccent,
+                      label: "البرامج السياحية",
+                      value: 30,
+                      route: '/programmes',
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, '/tours'); // تأكد من تعريف المسار '/guides'
-                      },
-                      child: DashboardCard(
-                        icon: Icons.account_tree_outlined,
-                        color: Colors.lightGreen,
-                        label: "الرحلات",
-                        value: 343,
-                        route: '/tours',
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, '/tours'); // تأكد من تعريف المسار '/guides'
+                    },
+                    child: DashboardCard(
+                      icon: Icons.tour,
+                      color: Colors.lightGreen,
+                      label: "الرحلات",
+                      value: 343,
+                      route: '/tours',
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context,
-                            '/tourists'); // تأكد من تعريف المسار '/guides'
-                      },
-                      child: DashboardCard(
-                        icon: Icons.accessibility,
-                        color: Colors.greenAccent,
-                        label: "السياح",
-                        value: 343,
-                        route: '/tourists',
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context,
+                          '/tourists'); // تأكد من تعريف المسار '/guides'
+                    },
+                    child: DashboardCard(
+                      icon: Icons.drive_eta,
+                      color: Colors.greenAccent,
+                      label: "السياح",
+                      value: 343,
+                      route: '/tourists',
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context,
-                            '/home'); // تأكد من تعريف المسار '/guides'
-                      },
-                      child: DashboardCard(
-                        icon: Icons.home,
-                        color: Colors.deepPurpleAccent,
-                        label: "صفحات المستخدم",
-                        value: 0,
-                        route: '/home',
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, '/home'); // تأكد من تعريف المسار '/guides'
+                    },
+                    child: DashboardCard(
+                      icon: Icons.home,
+                      color: Colors.deepPurpleAccent,
+                      label: "صفحات المستخدم",
+                      value: 0,
+                      route: '/home',
                     ),
-                  ],
-                                ),
-            ],//children
+                  ),
+                ],
+              ),
+            ], //children
           ),
         ),
       ),

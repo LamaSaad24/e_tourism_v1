@@ -22,12 +22,12 @@ class ProgrammesView extends GetView<ProgrammesController> {
           ),
           AdminMenuItem(
             title: 'الدليل السياحيين',
-            icon: Icons.accessibility,
+            icon: Icons.drive_eta,
             route: '/guides',
           ),
           AdminMenuItem(
             title: 'السائقين ',
-            icon: Icons.car_rental_sharp,
+            icon: Icons.drive_eta,
             route: '/drivers',
           ),
           AdminMenuItem(
@@ -37,17 +37,17 @@ class ProgrammesView extends GetView<ProgrammesController> {
           ),
           AdminMenuItem(
             title: 'الرحلات ',
-            icon: Icons.account_tree_outlined,
+            icon: Icons.tour,
             route: '/tours',
           ),
           AdminMenuItem(
             title: 'السياح ',
-            icon: Icons.accessibility,
+            icon: Icons.drive_eta,
             route: '/tourists',
           ),
           AdminMenuItem(
             title: 'تسجيل دخول  ',
-            icon: Icons.accessibility,
+            icon: Icons.drive_eta,
             route: '/login',
           )
         ],

@@ -43,10 +43,14 @@ class LoginView extends GetView<LoginController> {
                 minimumSize: Size(340.h, 50.w),
                 backgroundColor: Colors.deepPurple,
               ),
-              onPressed: () => controller.signIn(
-                controller.nameController.text,
-                controller.passwordController.text,
-              ),
+              // onPressed: () => controller.signIn(
+              //   controller.nameController.text,
+              //   controller.passwordController.text,
+              // ),
+              onPressed:() {
+                Navigator.pushNamed(
+                    context, '/home_dash');
+              },
               child: Text(Strings.login.tr,style: TextStyle(color: Colors.white)),
             ),
             SizedBox(height: 20.h),

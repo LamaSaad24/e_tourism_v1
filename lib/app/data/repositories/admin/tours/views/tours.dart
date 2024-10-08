@@ -1,4 +1,5 @@
 import 'package:e_tourism/app/data/repositories/admin/tours/controllers/tours.dart';
+import 'package:e_tourism/app/data/repositories/admin/tours/views/widgets/DatePickerPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,22 @@ class ToursView extends GetView<ToursController> {
       appBar: AppBar(
         title: const Text(' الرحلات'),
         backgroundColor: Colors.deepPurple,
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DatePickerPage(),
+                ),
+              );
+            },
+            child: Text('إنشاء تقرير',
+                style: TextStyle(color: Colors.white, fontSize: 12)),
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple, elevation: 0),
+          )
+        ],
       ),
       sideBar: SideBar(
         items: const [
@@ -22,12 +39,12 @@ class ToursView extends GetView<ToursController> {
           ),
           AdminMenuItem(
             title: 'الدليل السياحيين',
-            icon: Icons.accessibility,
+            icon: Icons.drive_eta,
             route: '/guides',
           ),
           AdminMenuItem(
             title: 'السائقين ',
-            icon: Icons.car_rental_sharp,
+            icon: Icons.drive_eta,
             route: '/drivers',
           ),
           AdminMenuItem(
@@ -37,12 +54,12 @@ class ToursView extends GetView<ToursController> {
           ),
           AdminMenuItem(
             title: 'الرحلات ',
-            icon: Icons.account_tree_outlined,
+            icon: Icons.tour,
             route: '/tours',
           ),
           AdminMenuItem(
             title: 'السياح ',
-            icon: Icons.accessibility,
+            icon: Icons.people_alt,
             route: '/tourists',
           ),
           AdminMenuItem(
@@ -70,7 +87,6 @@ class ToursView extends GetView<ToursController> {
           itemBuilder: (context, index) {
             final tour = controller.tours[index];
             return CommonCard(
-              // height: 166,
               child: Padding(
                 padding: const EdgeInsets.all(6),
                 child: Column(
@@ -84,55 +100,91 @@ class ToursView extends GetView<ToursController> {
                         alignment: Alignment.center,
                         color: Colors.grey.shade200,
                         child: Icon(
-                          Icons.person,
+                          Icons.tour,
                           color: Colors.purple, // لون الرمز
                         ),
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 16),
                     Text(
-                      'رقم الدليل: ${tour['guide_id']}',
+                      ' ${tour['title']}',
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'رقم السائق: ${tour['driver_id']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'رقم البرنامج: ${tour['programme_id']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'السعر: ${tour['price']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      'الرقم: ${tour['number']}',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const Spacer(),
+                    const SizedBox(height: 16),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.edit, color: Colors.blue),
-                          onPressed: () {
-                            Get.toNamed('/editTours', arguments: tour);
-                          },
+                        Text(
+                          '${tour['number']} سائح ',
+                          style:
+                              const TextStyle(fontSize: 12, color: Colors.grey),
                         ),
-                        IconButton(
-                          icon: Icon(Icons.delete, color: Colors.deepPurple),
-                          onPressed: () {
-                            controller.deleteTours(tour['id']);
-                          },
+                        Text(
+                          '${tour['date']}',
+                          style:
+                              const TextStyle(fontSize: 12, color: Colors.grey),
                         ),
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          '${tour['price']} \$',
+                          style:
+                              const TextStyle(fontSize: 12, color: Colors.grey),
+                        ),
+                        Container(
+                          height: 36,
+                          padding: const EdgeInsets.all(8.0),
+                          alignment: Alignment.center,
+                          color: (tour['type'].trim() == "بالانتظار")
+                              ? Colors.yellow
+                              : (tour['type'].trim() == "مفتوح")
+                                  ? Colors.green
+                                  : (tour['type'].trim() == "مغلق")
+                                      ? Colors.red
+                                      : Colors.grey.shade200,
+                          child: Text(
+                            '${tour['type']}',
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon:
+                                Icon(Icons.read_more, color: Colors.deepPurple),
+                            onPressed: () {
+                              Get.toNamed('/detailsTours', arguments: tour);
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.edit, color: Colors.blue),
+                            onPressed: () {
+                              Get.toNamed('/editTours', arguments: tour);
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete, color: Colors.redAccent),
+                            onPressed: () {
+                              controller.deleteTours(tour['id']);
+                            },
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),

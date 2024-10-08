@@ -13,13 +13,13 @@ class CommonCard extends StatelessWidget {
 
   const CommonCard(
       {super.key,
-        this.child,
-        this.padding,
-        this.margin,
-        this.width,
-        this.height,
-        this.title,
-        this.color});
+      this.child,
+      this.padding,
+      this.margin,
+      this.width,
+      this.height,
+      this.title,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +32,6 @@ class CommonCard extends StatelessWidget {
           height: height,
           child: child,
         ));
-    // return Card(
-    //     color: color,
-    //     child: title != null
-    //         ? _titleWidget(
-    //             title ?? '',
-    //             childWidget,
-    //           )
-    //         : childWidget,
-    //     shape: RoundedRectangleBorder(
-    //       borderRadius: BorderRadius.all(Radius.circular(2.0)),
-    //       side: BorderSide(width: 1, color: Color(0xFFE2E8F0)),
-    //     ));
     return Container(
       decoration: ShapeDecoration(
         color: color ?? Theme.of(context).cardTheme.color,
@@ -51,13 +39,13 @@ class CommonCard extends StatelessWidget {
           side: BorderSide(
               width: 1,
               color: Theme.of(context).cardTheme.surfaceTintColor ??
-                  Colors.transparent),
+                  const Color.fromARGB(60, 0, 0, 0)),
           borderRadius: BorderRadius.circular(2),
         ),
         shadows: [
           BoxShadow(
             color:
-            Theme.of(context).cardTheme.shadowColor ?? Colors.transparent,
+                Theme.of(context).cardTheme.shadowColor ?? Colors.transparent,
             blurRadius: 13,
             offset: Offset(0, 8),
             spreadRadius: -3,
@@ -66,9 +54,9 @@ class CommonCard extends StatelessWidget {
       ),
       child: title != null
           ? _titleWidget(
-        title ?? '',
-        childWidget,
-      )
+              title ?? '',
+              childWidget,
+            )
           : childWidget,
     );
   }

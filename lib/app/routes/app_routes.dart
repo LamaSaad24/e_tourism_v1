@@ -26,6 +26,7 @@ abstract class Routes {
   static const Programmes = _Paths.Programmes;
   static const EditProgrammes = _Paths.EditProgrammes;
   static const Tours = _Paths.Tours;
+  static const DETAILS_TOUR = _Paths.DETAILS_TOUR;
   static const EditTours = _Paths.EditTours;
   static const Tourists = _Paths.Tourists;
   static const EditTourists = _Paths.EditTourists;
@@ -46,6 +47,7 @@ abstract class _Paths {
   static const ADMIN_ADD_PRODUCTS = '/admin_add_product';
   //user
   static const TOUR_DETAILS = '/tour_details';
+
   //dashboard
   static const HOME_DASH = '/home_dash';
   static const Guides = '/guides';
@@ -55,6 +57,7 @@ abstract class _Paths {
   static const Programmes = '/programmes';
   static const EditProgrammes = '/editProgrammes';
   static const Tours = '/tours';
+  static const DETAILS_TOUR = '/detailsTours';
   static const EditTours = '/editTours';
   static const Tourists = '/tourists';
   static const EditTourists = '/editTourists';

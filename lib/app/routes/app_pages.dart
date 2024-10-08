@@ -14,6 +14,7 @@ import 'package:e_tourism/app/data/repositories/admin/tourists/views/tourists.da
 import 'package:e_tourism/app/data/repositories/admin/tourists/views/widgets/EditTouristView.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/bindings/tours.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/views/tours.dart';
+import 'package:e_tourism/app/data/repositories/admin/tours/views/widgets/DetailsTourView.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/views/widgets/EditTourView.dart';
 import 'package:e_tourism/app/modules/tour_details/bindings/tour_details_binding.dart';
 import 'package:e_tourism/app/modules/tour_details/views/tour_details_view.dart';
@@ -44,7 +45,8 @@ class AppPages {
 
   // static const INITIAL = Routes.INITIAL;
   // dashboard
-  static const INITIAL = Routes.HOME_DASH;
+  static const INITIAL = Routes.LOGIN;
+  static const HOME_DASH = Routes.HOME_DASH;
   static const guides = Routes.Guides;
   static const edit_guides = Routes.EditGuides;
   static const drivers = Routes.Drivers;
@@ -52,6 +54,7 @@ class AppPages {
   static const programmes = Routes.Programmes;
   static const edit_programmes = Routes.EditProgrammes;
   static const tours = Routes.Tours;
+  static const DETAILS_TOUR = Routes.DETAILS_TOUR;
   static const edit_tours = Routes.EditTours;
   static const tourists = Routes.Tourists;
   static const edit_tourists = Routes.EditTourists;
@@ -155,6 +158,10 @@ class AppPages {
       name: _Paths.Tours,
       page: () => ToursView(),
       binding: ToursBindings(),
+    ),
+    GetPage(
+      name: _Paths.DETAILS_TOUR,
+      page: () => DetailsTourView(),
     ),
     GetPage(
       name: _Paths.EditTours,
