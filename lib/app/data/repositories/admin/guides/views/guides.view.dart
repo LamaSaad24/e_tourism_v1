@@ -121,7 +121,7 @@ class GuidesView extends GetView<GuidesController> {
                           },
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: Icon(Icons.delete, color: Colors.deepPurple),
                           onPressed: () {
                             controller.deleteGuide(guide['id']);
                           },

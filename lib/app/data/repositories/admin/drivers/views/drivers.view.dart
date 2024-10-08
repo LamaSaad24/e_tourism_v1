@@ -100,7 +100,6 @@ class DriversView extends GetView<DriversController> {
                       'رقم اللوحة: ${driver['plateNum']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
-
                     const SizedBox(height: 6),
                     Text(
                       'وصف: ${driver['description']}',
@@ -117,7 +116,7 @@ class DriversView extends GetView<DriversController> {
                           },
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: Icon(Icons.delete, color: Colors.deepPurple),
                           onPressed: () {
                             controller.deleteDriver(driver['id']);
                           },

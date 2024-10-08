@@ -49,12 +49,19 @@ class CategoryItemsList extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    controller.categoriesList[index]['name'],
+                    controller.categoriesList[index]['price'],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 17.sp,
                     ),
+
                   ),
+                  Text(
+                  controller.categoriesList[index]['number'],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+              fontSize: 17.sp,
+              ),),
                 ],
               );
             },

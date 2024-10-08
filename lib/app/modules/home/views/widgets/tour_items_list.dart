@@ -16,7 +16,7 @@ class ProductItemsList extends StatelessWidget {
     return Obx(() {
       if (controller.isLoading.value) {
         return CupertinoActivityIndicator();
-      } else if (controller.productsList.isEmpty) {
+      } else if (controller.toursList.isEmpty) {
         return Center(
           child: Text(
             'لا توجد عناصر لعرضها 🙁',
@@ -33,7 +33,7 @@ class ProductItemsList extends StatelessWidget {
             horizontal: 10.w,
             vertical: 10.h,
           ),
-          itemCount: controller.productsList.length,
+          itemCount: controller.toursList.length,
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -45,8 +45,8 @@ class ProductItemsList extends StatelessWidget {
             return InkWell(
               onTap: () {
                 Get.toNamed(
-                  AppPages.PRODUCT_DETAILS,
-                  arguments: controller.productsList[index]['product_name'],
+                  AppPages.TOUR_DETAILS,
+                  arguments: controller.toursList[index]['title'],
                 );
               },
               child: Card(
@@ -57,18 +57,18 @@ class ProductItemsList extends StatelessWidget {
                 ),
                 child: Stack(
                   children: [
-                    Image.network(
-                      controller.productsList[index]['product_image'],
+                    Image.asset(
+                      controller.toursList[index]['image'],
                       fit: BoxFit.cover,
                       width: double.infinity,
-                      height: 110.h,
+                      height: 90.h,
                     ),
                     Positioned(
                       top: 10.h,
                       right: 110.w,
                       child: Container(
-                        width: 30.w,
-                        height: 30.h,
+                        width: 50.w,
+                        height: 50.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.white30,
@@ -76,11 +76,10 @@ class ProductItemsList extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             controller.performFavourite(
-                                controller.productsList[index]['product_name']);
+                                controller.toursList[index]['title']);
                           },
                           child: Icon(
-                            controller.productsList[index]['is_favourite'] ==
-                                    true
+                            controller.toursList[index]['is_favourite'] == true
                                 ? Icons.favorite
                                 : Icons.favorite_border,
                             color: Colors.white70,
@@ -94,7 +93,7 @@ class ProductItemsList extends StatelessWidget {
                       children: [
                         Center(
                           child: Text(
-                            controller.productsList[index]['product_name'],
+                            controller.toursList[index]['title'],
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -103,12 +102,13 @@ class ProductItemsList extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          controller.productsList[index]['product_price'],
+                          controller.toursList[index]["price"] + "\$",
+                          textAlign: TextAlign.right,
                           style: TextStyle(
                             fontSize: 15.sp,
                             color: AppColors.customRed,
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ],

@@ -126,7 +126,7 @@ class ToursView extends GetView<ToursController> {
                           },
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: Icon(Icons.delete, color: Colors.deepPurple),
                           onPressed: () {
                             controller.deleteTours(tour['id']);
                           },

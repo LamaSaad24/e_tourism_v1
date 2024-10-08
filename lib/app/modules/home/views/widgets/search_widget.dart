@@ -40,19 +40,19 @@ class SearchWidget extends StatelessWidget {
           ),
           controller: controller.editController,
           onChanged: (value) {
-            controller.searchProducts(value);
+            controller.searchTours(value);
           },
         ),
         Obx(() {
           return ListView.builder(
             shrinkWrap: true,
-            itemCount: controller.searchedProducts.length,
+            itemCount: controller.searchedTours.length,
             itemBuilder: (context, index) {
               return ListTile(
                 leading: Image.network(
-                    controller.searchedProducts[index]['product_image']),
+                    controller.searchedTours[index]['product_image']),
                 title: Text(
-                  controller.searchedProducts[index]['product_name'],
+                  controller.searchedTours[index]['product_name'],
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class SearchWidget extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  controller.searchedProducts[index]['product_price'],
+                  controller.searchedTours[index]['product_price'],
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: AppColors.customRed,

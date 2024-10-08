@@ -64,7 +64,7 @@ class CardInfo extends StatelessWidget {
           SizedBox(height: 40.h),
           ElevatedButton(
             onPressed: () => Get.back(),
-            child: Text('حفظ'),
+            child: Text('حفظ',style: TextStyle(color: Colors.white)),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.customRed,
             ),

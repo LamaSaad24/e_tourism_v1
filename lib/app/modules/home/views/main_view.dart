@@ -54,15 +54,15 @@ class MainView extends GetView<MainNavController> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(Routes.ADMIN_ADD_PRODUCTS),
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-          size: 30,
-        ),
-        backgroundColor: AppColors.customRed,
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => Get.toNamed(Routes.ADMIN_ADD_PRODUCTS),
+      //   child: Icon(
+      //     Icons.add,
+      //     color: Colors.white,
+      //     size: 30,
+      //   ),
+      //   backgroundColor: Colors.deepPurple,
+      // ),
     );
   }
 }

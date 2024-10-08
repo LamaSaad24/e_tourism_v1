@@ -67,7 +67,7 @@ class AddNewAddress extends StatelessWidget {
           SizedBox(height: 30),
           ElevatedButton(
             onPressed: () => Get.back(),
-            child: Text('حفظ'),
+            child: Text('حفظ',style: TextStyle(color: Colors.white)),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.customRed,
             ),

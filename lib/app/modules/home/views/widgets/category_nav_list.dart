@@ -71,7 +71,7 @@ class CategoryNavList extends StatelessWidget {
                     ),
                     Container(
                       color: index == controller.getSelectedIndex()
-                          ? Colors.red
+                          ? Colors.deepPurple
                           : Colors.transparent,
                       width: 3.w,
                       height: 115.h,

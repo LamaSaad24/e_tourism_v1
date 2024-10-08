@@ -67,28 +67,6 @@ class PaymentView extends GetView<PaymentController> {
                     trailing: Icon(Icons.arrow_forward_ios),
                   ),
                 ),
-                SizedBox(height: 10.h),
-                Card(
-                  elevation: 2,
-                  child: ListTile(
-                    onTap: () => controller.bottomSheet(
-                        context, AddSpec(controller: controller)),
-                    leading: Icon(
-                      Icons.redeem,
-                      color: Colors.black,
-                      size: 30,
-                    ),
-                    title: Text(
-                      'اضافة مواصفات المنتج',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    trailing: Icon(Icons.arrow_forward_ios),
-                  ),
-                ),
               ],
             ),
           ),
@@ -96,7 +74,7 @@ class PaymentView extends GetView<PaymentController> {
             padding: EdgeInsets.all(20.r),
             child: ElevatedButton(
               onPressed: () => Get.toNamed(AppPages.PAYMENT_CONFIRMATION),
-              child: Text('تأكيد الطلب'),
+              child: Text('تأكيد الاشتراك',style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.customRed,
                 minimumSize: Size(double.infinity, 50.h),

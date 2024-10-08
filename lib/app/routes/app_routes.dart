@@ -2,10 +2,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const INITIAL = _Paths.INITIAL;
-  static const HOME = _Paths.HOME;
-  static const LOGIN = _Paths.LOGIN;
-  static const REGISTER = _Paths.REGISTER;
+
   static const REGISTER_CODE = _Paths.REGISTER_CODE;
   static const PRODUCT_DETAILS = _Paths.PRODUCT_DETAILS;
   static const PAYMENT = _Paths.PAYMENT;
@@ -14,6 +11,12 @@ abstract class Routes {
   static const USER_PROFILE = _Paths.USER_PROFILE;
 
   static const ADMIN_ADD_PRODUCTS = _Paths.ADMIN_ADD_PRODUCTS;
+  //user
+  static const INITIAL = _Paths.INITIAL;
+  static const HOME = _Paths.HOME;
+  static const LOGIN = _Paths.LOGIN;
+  static const REGISTER = _Paths.REGISTER;
+  static const TOUR_DETAILS = _Paths.TOUR_DETAILS;
   // Dashboard
   static const HOME_DASH = _Paths.HOME_DASH;
   static const Guides = _Paths.Guides;
@@ -41,6 +44,8 @@ abstract class _Paths {
   static const NOTIFICATION = '/notification';
   static const USER_PROFILE = '/user_profile';
   static const ADMIN_ADD_PRODUCTS = '/admin_add_product';
+  //user
+  static const TOUR_DETAILS = '/tour_details';
   //dashboard
   static const HOME_DASH = '/home_dash';
   static const Guides = '/guides';

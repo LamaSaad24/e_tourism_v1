@@ -30,15 +30,15 @@ class BottomNavBar extends StatelessWidget {
               size: 30.r,
             ),
           ),
+          // BottomNavigationBarItem(
+          //   label: 'الفئات',
+          //   icon: Icon(
+          //     Icons.category,
+          //     size: 30.r,
+          //   ),
+          // ),
           BottomNavigationBarItem(
-            label: 'الفئات',
-            icon: Icon(
-              Icons.category,
-              size: 30.r,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'طلباتي',
+            label: 'رحلاتي',
             icon: Icon(
               Icons.shopping_cart_rounded,
               size: 30.r,

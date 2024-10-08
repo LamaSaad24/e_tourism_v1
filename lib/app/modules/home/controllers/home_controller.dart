@@ -11,47 +11,47 @@ class HomeController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final editController = TextEditingController();
   final tabIndex = 0.obs;
-  var product;
-  RxString selectedProduct = ''.obs;
+  var tour;
+  RxString selectedTour = ''.obs;
   RxBool isLoading = false.obs;
   List<Map<String, dynamic>> categoriesList = [];
-  RxList<dynamic> productsList = [].obs;
-  RxList<dynamic> searchedProducts = RxList<Map<String, dynamic>>([]);
+  RxList<dynamic> toursList = <Map<String, dynamic>>[].obs;
+  RxList<dynamic> searchedTours = RxList<Map<String, dynamic>>([]);
 
   void changeTabIndex(int index) {
     tabIndex.value = index;
   }
 
-  void setFavouriteProduct(String product_name) {
-    selectedProduct.value = product_name;
+  void setFavouriteTour(String tour_name) {
+    selectedTour.value = tour_name;
   }
 
   String changeTabTitle() {
     if (tabIndex.value == 0) {
       return 'الرئيسية';
     } else if (tabIndex.value == 1) {
-      return 'الفئات';
+      return 'الرحلات';
     } else if (tabIndex.value == 2) {
-      return 'طلباتي';
+      return 'رحلاتي';
     } else if (tabIndex.value == 3) {
       return 'المفضلة';
     }
     return 'بدون عنوان';
   }
 
-  Future<dynamic> searchProducts(String keyword) async {
+  Future<dynamic> searchTours(String keyword) async {
     if (keyword.isNotEmpty) {
       final QuerySnapshot query = await FirebaseFirestore.instance
-          .collection('products')
-          .where('product_name', isGreaterThanOrEqualTo: keyword)
-          .where('product_name', isLessThanOrEqualTo: keyword + '\uf8ff')
+          .collection('tours')
+          .where('tour_name', isGreaterThanOrEqualTo: keyword)
+          .where('tour_name', isLessThanOrEqualTo: keyword + '\uf8ff')
           .get();
 
-      searchedProducts.value =
+      searchedTours.value =
           query.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
-      return searchedProducts;
+      return searchedTours;
     } else {
-      searchedProducts.clear();
+      searchedTours.clear();
     }
   }
 
@@ -72,31 +72,57 @@ class HomeController extends GetxController {
     return categoriesList;
   }
 
-  Future<RxList> getProductsList() async {
+  Future<RxList> getToursList() async {
     isLoading.value = true;
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('products').get();
-      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
-        Map<String, dynamic> productData =
-            (documentSnapshot.data() as Map<String, dynamic>);
-        productsList.add(productData);
-        isLoading.value = false;
-      }
+      // QuerySnapshot querySnapshot =
+      // await FirebaseFirestore.instance.collection('tours').get();
+      // for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+      //   Map<String, dynamic> tourData =
+      //       (documentSnapshot.data() as Map<String, dynamic>);
+      //   toursList.add(tourData);
+      //   isLoading.value = false;
+      // }
+      var tourData = [
+        {
+          'id': 1,
+          'guide_id': '1',
+          'driver_id': '8',
+          'programme_id': '5',
+          'title':'tour1',
+          'price': '120',
+          'number': '34',
+          'image':"assets/images/1.png",
+          'is_favourite':true,
+        },
+        {
+          'id': 2,
+          'guide_id': '1',
+          'driver_id': '8',
+          'programme_id': '5',
+          'price': '120',
+          'title': 'tour2',
+          'number': '58',
+          'image': "assets/images/3.png",
+          'is_favourite':true,
+        },
+      ].obs;
+      toursList.addAll(tourData);
+      isLoading.value = false;
     } catch (e) {
       Logger().e(e);
     }
-    return productsList;
+    return toursList;
   }
 
-  Future<DocumentSnapshot?> getProductByName() async {
+  Future<DocumentSnapshot?> getTourByName() async {
     isLoading.value = true;
     try {
       CollectionReference collection =
-          FirebaseFirestore.instance.collection('products');
+          FirebaseFirestore.instance.collection('tours');
 
       QuerySnapshot querySnapshot = await collection
-          .where('product_name', isEqualTo: selectedProduct.value)
+          .where('tour_name', isEqualTo: selectedTour.value)
           .get();
 
       if (querySnapshot.docs.isNotEmpty) {
@@ -112,41 +138,41 @@ class HomeController extends GetxController {
     }
   }
 
-  fetchProduct() async {
+  fetchTour() async {
     isLoading.value = true;
-    DocumentSnapshot? document = await getProductByName();
+    DocumentSnapshot? document = await getTourByName();
     if (document != null) {
-      product = document.data();
+      tour = document.data();
       isLoading.value = false;
     } else {
       Logger().e('Document not found');
     }
   }
 
-  void addProductToFavourites() async {
+  void addTourToFavourites() async {
     isLoading.value = true;
     var userId = FirebaseAuth.instance.currentUser!.uid;
 
-    if (product != null) {
-      final productName = product['product_name'];
+    if (tour != null) {
+      final tourName = tour['tour_name'];
 
       try {
-        final productQuery = await FirebaseFirestore.instance
-            .collection('products')
-            .where('product_name', isEqualTo: productName)
+        final tourQuery = await FirebaseFirestore.instance
+            .collection('tours')
+            .where('tour_name', isEqualTo: tourName)
             .get();
 
-        if (productQuery.docs.isNotEmpty) {
-          final productDocRef = productQuery.docs.first.reference;
-          await productDocRef.update({
+        if (tourQuery.docs.isNotEmpty) {
+          final tourDocRef = tourQuery.docs.first.reference;
+          await tourDocRef.update({
             'is_favourite': true,
           });
 
-          final productIndex = productsList.indexWhere(
-            (product) => product['product_name'] == productName,
+          final tourIndex = toursList.indexWhere(
+            (tour) => tour['tour_name'] == tourName,
           );
-          if (productIndex != -1) {
-            productsList[productIndex]['is_favourite'] = true;
+          if (tourIndex != -1) {
+            toursList[tourIndex]['is_favourite'] = true;
           }
 
           final cartRef = FirebaseFirestore.instance
@@ -156,11 +182,11 @@ class HomeController extends GetxController {
           await cartRef.set({
             'favouriteItems': FieldValue.arrayUnion([
               {
-                'product_name': productName,
-                'product_description': product['product_description'],
-                'product_price': product['product_price'],
-                'product_image': product['product_image'],
-                'category_name': product['category_name'],
+                'tour_name': tourName,
+                'tour_description': tour['tour_description'],
+                'tour_price': tour['tour_price'],
+                'tour_image': tour['tour_image'],
+                'category_name': tour['category_name'],
                 'is_favourite': true,
               }
             ])
@@ -194,16 +220,16 @@ class HomeController extends GetxController {
     }
   }
 
-  void performFavourite(String product_name) async {
-    setFavouriteProduct(product_name);
-    await fetchProduct();
-    addProductToFavourites();
+  void performFavourite(String tour_name) async {
+    setFavouriteTour(tour_name);
+    await fetchTour();
+    addTourToFavourites();
   }
 
   @override
   void onInit() {
     getCategoriesList();
-    getProductsList();
+    getToursList();
     super.onInit();
   }
 }

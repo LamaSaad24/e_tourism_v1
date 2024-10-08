@@ -42,7 +42,7 @@ class PickPayment extends StatelessWidget {
           PaymentMethods(controller: controller),
           SizedBox(height: 30.h),
           ElevatedButton(
-            child: Text('التالي'),
+            child: Text('التالي',style: TextStyle(color: Colors.white)),
             onPressed: () {
               Get.back();
               showModalBottomSheet(

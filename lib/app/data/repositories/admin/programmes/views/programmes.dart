@@ -100,7 +100,6 @@ class ProgrammesView extends GetView<ProgrammesController> {
                       ' النوع: ${programme['Type']}',
                       style: const TextStyle(fontSize: 12, color: Colors.grey),
                     ),
-
                     const SizedBox(height: 6),
                     Text(
                       'وصف: ${programme['description']}',
@@ -113,11 +112,12 @@ class ProgrammesView extends GetView<ProgrammesController> {
                         IconButton(
                           icon: Icon(Icons.edit, color: Colors.blue),
                           onPressed: () {
-                            Get.toNamed('/editProgrammes', arguments: programme);
+                            Get.toNamed('/editProgrammes',
+                                arguments: programme);
                           },
                         ),
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: Icon(Icons.delete, color: Colors.deepPurple),
                           onPressed: () {
                             controller.deleteProgrammes(programme['id']);
                           },

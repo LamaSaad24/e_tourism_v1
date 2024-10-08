@@ -144,6 +144,19 @@ class AdminHomeView extends GetView<AdminHomeController> {
                         route: '/tourists',
                       ),
                     ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context,
+                            '/home'); // تأكد من تعريف المسار '/guides'
+                      },
+                      child: DashboardCard(
+                        icon: Icons.home,
+                        color: Colors.deepPurpleAccent,
+                        label: "صفحات المستخدم",
+                        value: 0,
+                        route: '/home',
+                      ),
+                    ),
                   ],
                                 ),
             ],//children

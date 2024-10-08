@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:e_tourism/utils/colors.dart';
 
-class CategoryItemTitle extends StatelessWidget {
-  CategoryItemTitle({
+class HeaderTitle extends StatelessWidget {
+  const HeaderTitle({
     super.key,
-    required this.categoryTitle,
   });
-
-  final String categoryTitle;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Container(
-          height: 25.h,
-          width: 3.w,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.deepPurple,
-          ),
+          width: 4.w,
+          height: 30.h,
+          color: AppColors.customRed,
         ),
         SizedBox(width: 10.w),
         Text(
-          categoryTitle,
+          'رحلات ذات صلة',
           style: TextStyle(
-            fontSize: 20,
             fontWeight: FontWeight.bold,
+            fontSize: 17.sp,
           ),
         ),
       ],

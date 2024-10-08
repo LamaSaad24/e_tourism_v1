@@ -15,6 +15,8 @@ import 'package:e_tourism/app/data/repositories/admin/tourists/views/widgets/Edi
 import 'package:e_tourism/app/data/repositories/admin/tours/bindings/tours.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/views/tours.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/views/widgets/EditTourView.dart';
+import 'package:e_tourism/app/modules/tour_details/bindings/tour_details_binding.dart';
+import 'package:e_tourism/app/modules/tour_details/views/tour_details_view.dart';
 import 'package:get/get.dart';
 import 'package:e_tourism/app/modules/code_check/bindings/register_code_binding.dart';
 import 'package:e_tourism/app/modules/code_check/views/register_code_view.dart';
@@ -59,6 +61,7 @@ class AppPages {
   static const REGISTER = Routes.REGISTER;
   static const REGISTER_CODE = Routes.REGISTER_CODE;
   static const PRODUCT_DETAILS = Routes.PRODUCT_DETAILS;
+  static const TOUR_DETAILS = Routes.TOUR_DETAILS;
   static const PAYMENT = Routes.PAYMENT;
   static const PAYMENT_CONFIRMATION = Routes.PAYMENT_CONFIRMATION;
   static const NOTIFICATION = Routes.NOTIFICATION;
@@ -165,6 +168,12 @@ class AppPages {
     GetPage(
       name: _Paths.EditTourists,
       page: () => EditTouristsView(),
+    ),
+    //users
+    GetPage(
+      name: _Paths.TOUR_DETAILS,
+      page: () => TourDetailsView(),
+      binding: TourDetailsBinding(),
     ),
   ];
 }
