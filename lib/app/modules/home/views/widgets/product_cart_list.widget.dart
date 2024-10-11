@@ -34,8 +34,9 @@ class ProductCartList extends GetView<ShoppingController> {
                     foregroundColor: AppColors.whiteColor,
                   ),
                   SlidableAction(
-                    onPressed: (context) => controller.removeCartItem(
-                        controller.cartItems[index].product_name),
+                    onPressed: (context) => (),
+                        // controller.removeCartItem(
+                        // controller.cartItems[index].product_name),
                     borderRadius: BorderRadius.all(
                       Radius.circular(10.r),
                     ),

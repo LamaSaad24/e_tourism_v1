@@ -72,8 +72,9 @@ class FavouriteItems extends StatelessWidget {
                   ),
                   Expanded(
                     child: IconButton(
-                      onPressed: () => controller.removeFavouriteItem(
-                        controller.favouriteItems[index].product_name,
+                      onPressed: () => (
+                        //   controller.removeFavouriteItem(
+                        // controller.favouriteItems[index].product_name,
                       ),
                       icon: Icon(
                         Icons.delete,

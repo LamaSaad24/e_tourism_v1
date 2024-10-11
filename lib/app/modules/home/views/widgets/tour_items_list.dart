@@ -75,8 +75,8 @@ class ProductItemsList extends StatelessWidget {
                         ),
                         child: InkWell(
                           onTap: () {
-                            controller.performFavourite(
-                                controller.toursList[index]['title']);
+                            // controller.performFavourite(
+                            //     controller.toursList[index]['title']);
                           },
                           child: Icon(
                             controller.toursList[index]['is_favourite'] == true

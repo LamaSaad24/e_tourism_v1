@@ -8,16 +8,10 @@ import 'package:e_tourism/app/modules/stripe_payment/stripe_keys.dart';
 import 'package:e_tourism/app/routes/app_pages.dart';
 import 'package:e_tourism/config/theme/my_theme.dart';
 import 'package:e_tourism/config/translations/localization_service.dart';
-import 'package:e_tourism/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MySharedPref.init();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  Stripe.publishableKey = ApiKeys.publishableKey;
-  Stripe.publishableKey = ApiKeys.publishableKey;
   runApp(const MyApp());
 }
 

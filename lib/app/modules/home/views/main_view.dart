@@ -13,7 +13,7 @@ import 'package:e_tourism/app/routes/app_pages.dart';
 import 'package:e_tourism/utils/colors.dart';
 
 class MainView extends GetView<MainNavController> {
-  const MainView({Key? key}) : super(key: key);
+  // const MainView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
