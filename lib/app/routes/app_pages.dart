@@ -12,6 +12,7 @@ import 'package:e_tourism/app/data/repositories/admin/programmes/views/widgets/E
 import 'package:e_tourism/app/data/repositories/admin/tourists/bindings/tourists.dart';
 import 'package:e_tourism/app/data/repositories/admin/tourists/views/tourists.dart';
 import 'package:e_tourism/app/data/repositories/admin/tourists/views/widgets/EditTouristView.dart';
+import 'package:e_tourism/app/data/repositories/admin/tours/bindings/DetailsTour.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/bindings/tours.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/views/tours.dart';
 import 'package:e_tourism/app/data/repositories/admin/tours/views/widgets/DetailsTourView.dart';
@@ -162,10 +163,12 @@ class AppPages {
     GetPage(
       name: _Paths.DETAILS_TOUR,
       page: () => DetailsTourView(),
+      binding: DetailsTourBindings()
     ),
     GetPage(
       name: _Paths.EditTours,
       page: () => EditTourView(),
+        binding: DetailsTourBindings()
     ),
     GetPage(
       name: _Paths.Tourists,
@@ -175,6 +178,7 @@ class AppPages {
     GetPage(
       name: _Paths.EditTourists,
       page: () => EditTouristsView(),
+      
     ),
     //users
     GetPage(

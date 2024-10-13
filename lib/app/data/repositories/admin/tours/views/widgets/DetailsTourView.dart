@@ -1,117 +1,76 @@
+import 'package:e_tourism/app/data/repositories/admin/tours/controllers/DetailsTour.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:e_tourism/app/modules/tour_details/views/widgets/header_title.dart';
 import 'package:e_tourism/utils/colors.dart';
+import 'package:get/get.dart';
 
-class DetailsTourView extends StatelessWidget {
+class DetailsTourView extends GetView<DetailsTourController> {
   @override
   Widget build(BuildContext context) {
-    // return Obx(() {
+    final args = Get.arguments as Map<String, dynamic>;
+    final id = args['id'];
+    controller.setTourId(id);
+
     return AdminScaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(' الرحلات'),
+        title: const Text(' تفاصيل الرحلة'),
         backgroundColor: Colors.deepPurple,
       ),
-      sideBar: SideBar(
-        items: const [
-          AdminMenuItem(
-            title: 'الصفحة الرئيسية',
-            route: '/home_dash',
-            icon: Icons.dashboard,
-          ),
-          AdminMenuItem(
-            title: 'الدليل السياحيين',
-            icon: Icons.drive_eta,
-            route: '/guides',
-          ),
-          AdminMenuItem(
-            title: 'السائقين ',
-            icon: Icons.drive_eta,
-            route: '/drivers',
-          ),
-          AdminMenuItem(
-            title: 'البرامج السياحية',
-            icon: Icons.add_chart,
-            route: '/programmes',
-          ),
-          AdminMenuItem(
-            title: 'الرحلات ',
-            icon: Icons.tour,
-            route: '/tours',
-          ),
-          AdminMenuItem(
-            title: 'السياح ',
-            icon: Icons.drive_eta,
-            route: '/tourists',
-          ),
-          AdminMenuItem(
-            title: 'تسجيل الدخول ',
-            icon: Icons.login,
-            route: '/login',
-          ),
-        ],
-        selectedRoute: '/',
-        onSelected: (item) {
-          if (item.route != null) {
-            Navigator.of(context).pushNamed(item.route!);
-          }
-        },
-      ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          // ImagesPageView(controller: controller),
-          Image.asset(
-            "assets/images/1.png",
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: 90.h,
-          ),
-          SizedBox(height: 15.h),
-          SizedBox(height: 30.h),
-          Text(
-            // controller.tour['title'],
-            "tour1",
-            style: TextStyle(
-              fontSize: 17.sp,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            // controller.tour['price'],
-            "120\$",
-            style: TextStyle(
-              fontSize: 17.sp,
-              color: AppColors.customRed,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            // controller.tour['number'],
-            "50",
-            style: TextStyle(
-              fontSize: 17.sp,
-              color: AppColors.customRed,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            // controller.tour['description'],
-            "this is description",
-            maxLines: 4,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 15.sp,
-            ),
-          ),
-        ],
+      body: (Obx(() {
+        return controller.isLoading.value
+            ? Center(child: CupertinoActivityIndicator())
+            : ListView(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  Image.network(
+                    "https://image.tmdb.org/t/p/original${controller.tour['backdrop_path']}",
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: 90.h,
+                  ),
+                  SizedBox(height: 15.h),
+                  SizedBox(height: 30.h),
+                  Text(
+                    "${controller.tour['title']} العنوان : ",
+                    style: TextStyle(
+                      fontSize: 17.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    "${controller.tour['popularity']}  \$",
+                    style: TextStyle(
+                      fontSize: 17.sp,
+                      color: AppColors.customRed,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    controller.tour['vote_average'].toString(),
+                    style: TextStyle(
+                      fontSize: 17.sp,
+                      color: AppColors.customRed,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    "${controller.tour['overview']}",
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                    ),
+                  ),
+                ],
+              );
+        })
       ),
     );
   }

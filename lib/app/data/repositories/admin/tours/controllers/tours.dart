@@ -1,48 +1,38 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:logger/logger.dart';
 
 class ToursController extends GetxController {
-  // البيانات الوهمية للمرشدين
-  var tours = <Map<String, dynamic>>[
-    {
-      'id': 1,
-      'title':'الرحلةالاولى ',
-      'guide_id': '1',
-      'driver_id': '8',
-      'programme_id': '5',
-      'price': '120',
-      'number': '58',
-      'type':'مغلق',
-      'date':'20/10/2024',
-      'image':'assets/images/1.png'
-    },
-    {
-      'id': 2,
-      'title':'الرحلة الثانية',
-      'guide_id': '1',
-      'driver_id': '8',
-      'programme_id': '5',
-      'price': '120',
-      'number': '58',
-      'type':'بالانتظار',
-      'date':'20/10/2024',
-      'image':'assets/images/2.png'
-    },
-    {
-      'id': 2,
-      'title':'الرحلة الثالثة',
-      'guide_id': '1',
-      'driver_id': '8',
-      'programme_id': '5',
-      'price': '120',
-      'number': '58',
-      'type':'مفتوح',
-      'date':'20/10/2024',
-      'image':'assets/images/3.png'
-    },
-  ].obs;
+  RxBool isLoading = false.obs;
+  RxList<dynamic> tours = [].obs;
+
+
+  Future<RxList> getToursList() async {
+    isLoading.value = true;
+    try {
+      var apiKey = "02e52c269a76ea64d636e0399c085eb1";
+      var url = "https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}";
+      var res = await  get(Uri.parse(url));
+      var data = jsonDecode(res.body);
+      // print(data);
+      tours.addAll(data['results']);
+      isLoading.value = false;
+    } catch (e) {
+      Logger().e(e);
+    }
+    return tours;
+  }
 
   // دالة حذف المرشد
-  void deleteTours(int id) {
+  void deleteTours(int id) async {
+    final response = await delete(
+        Uri.parse('https://jsonplaceholder.typicode.com/albums/$id'),
+        headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        },);
+
     tours.removeWhere((tour) => tour['id'] == id);
   }
 
@@ -52,5 +42,11 @@ class ToursController extends GetxController {
     if (index != -1) {
       tours[index] = updatedTours;
     }
+  }
+
+  @override
+  void onInit() {
+    getToursList();
+    super.onInit();
   }
 }
